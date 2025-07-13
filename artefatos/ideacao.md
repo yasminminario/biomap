@@ -173,7 +173,7 @@
 
 #### 4.3.1. TAM (Total Addressable Market)
 
-O TAM para o Biomap representa o mercado máximo de usuários que poderiam, teoricamente, se beneficiar de uma ferramenta de análise de dados ambientais urbanos. Este mercado é global e inclui qualquer indivíduo ou organização envolvida com sustentabilidade urbana, planejamento de cidades e pesquisa ambiental. Isso inclui a seguinte estimativa de público:
+&nbsp;&nbsp;&nbsp;&nbsp;O TAM para o Biomap representa o mercado máximo de usuários que poderiam, teoricamente, se beneficiar de uma ferramenta de análise de dados ambientais urbanos. Este mercado é global e inclui qualquer indivíduo ou organização envolvida com sustentabilidade urbana, planejamento de cidades e pesquisa ambiental. Isso inclui a seguinte estimativa de público:
 
 - Estudantes e Pesquisadores: Milhões de estudantes universitários em cursos de Urbanismo, Arquitetura, Biologia, Gestão Ambiental e Geografia em todo o mundo.
 
@@ -183,7 +183,7 @@ O TAM para o Biomap representa o mercado máximo de usuários que poderiam, teor
 
 #### 4.3.2. SAM (Serviceable Available Market)
 
-O SAM é a parte do TAM que o Biomap pode realisticamente atender, considerando as barreiras iniciais de idioma (português) e contexto (cidades brasileiras). Nosso mercado acessível são os atores que atuam no Brasil. Isso inclui a seguinte estimativa de público:
+&nbsp;&nbsp;&nbsp;&nbsp;O SAM é a parte do TAM que o Biomap pode realisticamente atender, considerando as barreiras iniciais de idioma (português) e contexto (cidades brasileiras). Nosso mercado acessível são os atores que atuam no Brasil. Isso inclui a seguinte estimativa de público:
 
 - Estudantes e Pesquisadores no Brasil: Número total de estudantes matriculados em cursos de graduação e pós-graduação correlatos no país.
 
@@ -193,7 +193,7 @@ O SAM é a parte do TAM que o Biomap pode realisticamente atender, considerando 
 
 #### 4.3.3. SOM (Serviceable Obtainable Market)
 
-O SOM representa a meta de adoção inicial e realista para os primeiros períodos do projeto. É o público que será engajado diretamente através de esforços de divulgação, focando primariamente no ecossistema de São Paulo. Isso inclui a seguinte estimativa de público:
+&nbsp;&nbsp;&nbsp;&nbsp;O SOM representa a meta de adoção inicial e realista para os primeiros períodos do projeto. É o público que será engajado diretamente através de esforços de divulgação, focando primariamente no ecossistema de São Paulo. Isso inclui a seguinte estimativa de público:
 
 - Comunidade Acadêmica Local: Estudantes e professores do Inteli e de outras universidades em São Paulo (como USP, Mackenzie, etc.) para utilizar a ferramenta em projetos e trabalhos acadêmicos.
 
@@ -227,38 +227,86 @@ O SOM representa a meta de adoção inicial e realista para os primeiros períod
 ## 6. Requisitos do Sistema
 
 ### 6.1 Requisitos Funcionais
+
 | Código | Descrição da Funcionalidade | Prioridade | Observações Técnicas Relevantes |
 | :--- | :--- | :--- | :--- |
-| RF01   |                              |            |                                 |
-| RF02   |                              |            |                                 |
-| RF03   |                              |            |                                 |
-| RF04   |                              |            |                                 |
-| RF05   |                              |            |                                 |
-| RF06   |                              |            |                                 |
+| RF01   | Visualizar um mapa-base interativo da área selecionada. | Alta | Utilizar uma API de mapas como OpenStreetMap ou Google Maps. Implementar funções de zoom e pan. |
+| RF02   | Selecionar e visualizar dados de uma localidade específica. | Alta | O usuário deve poder, através de um único campo de busca ou menu, focar o mapa e os dados em uma localidade. |
+| RF03   | Processar e classificar imagens de satélite com IA. | Alta | O sistema deve processar uma imagem de satélite de uma área e, utilizando a Rede Neural Convolucional (CNN), gerar uma camada de segmentação semântica, classificando cada pixel em categorias como vegetação, construção, água, etc. |
+| RF04   | Calcular índices de saúde da vegetação. | Alta | O sistema deve ser capaz de calcular o índice NDVI para uma área selecionada, utilizando as bandas espectrais da imagem de satélite para gerar uma camada de visualização que representa a saúde e a densidade da vegetação. |
+| RF05   | Realizar Análise de Detecção de Mudanças ao longo do tempo. | Média | O sistema deve ser capaz de comparar duas camadas de classificação de IA de anos diferentes para identificar e quantificar as áreas onde ocorreram mudanças significativas (ex: ganho ou perda de vegetação). |
+| RF06   | Agregar dados pós-análise para geração de estatísticas. | Alta | Após a IA classificar os pixels, o sistema deve agregar esses dados para gerar as estatísticas quantitativas que alimentarão os dashboards (ex: "Bairro X tem 27% de área verde"). |
+| RF07   | Comparar os dados de duas ou mais localizações diferentes. | Média | Permitir que o usuário adicione duas ou mais localidades a um painel para comparar seus indicadores lado a lado. |
+| RF08   | Exportar a visualização do mapa e os dados estatísticos. | Baixa | Permitir o download da visualização atual (PNG) e dos dados agregados (CSV). |
+| RF09   | Permitir o Treinamento e Atualização do Modelo de IA. | Alta | A plataforma deve possuir um módulo de backend que permita o re-treinamento do modelo de CNN com novos dados rotulados, visando a melhoria contínua da sua acurácia. |
+
 
 ### 6.2 Requisitos Não Funcionais
+
 | Código | Descrição Clara do Requisito | Tipo do Requisito | Observações Complementares |
 | :--- | :--- | :--- | :--- |
-| RNF01  |                              |                   |                            |
-| RNF02  |                              |                   |                            |
-| RNF03  |                              |                   |                            |
-| RNF04  |                              |                   |                            |
+| RNF01  | A plataforma deve ser intuitiva e ter uma baixa curva de aprendizado. | Usabilidade | O fluxo principal de uso (selecionar cidade, ver mapa) deve ser completado sem necessidade de um tutorial, mesmo por um usuário leigo em geoprocessamento. |
+| RNF02  | O mapa e as camadas de dados devem carregar em até 5 segundos. | Desempenho | Em uma conexão de internet padrão. Requer otimização no processamento e entrega dos dados geoespaciais. |
+| RNF03  | O site deve ser funcional nas versões mais recentes dos navegadores. | Compatibilidade | Garantir funcionamento em Google Chrome, Mozilla Firefox e Microsoft Edge. O design deve ser responsivo para desktops e tablets. |
+| RNF04  | A plataforma deve estar acessível publicamente 24/7. | Disponibilidade | O sistema deve ter uma alta disponibilidade (ex: 99% de uptime), garantida pela infraestrutura de nuvem. |
+| RNF05  | A interface deve ter um design limpo e ser responsiva. | Usabilidade | O layout deve se adaptar automaticamente para uma visualização clara em diferentes tamanhos de tela, como desktops, notebooks e tablets. |
 
 
 ## 7. Componente de Inteligência Artificial
 
 ### 7.1 Técnica de IA Aplicada
+
+&nbsp;&nbsp;&nbsp;&nbsp;A principal técnica de Inteligência Artificial aplicada no projeto será a Segmentação Semântica através do Aprendizado Supervisionado. Para executar essa tarefa, será utilizada uma Rede Neural Convolucional (CNN), que é um tipo de modelo de Aprendizado Profundo (Deep Learning) especializado na análise de imagens. A arquitetura específica planejada para a implementação é a U-Net, reconhecida por sua alta eficácia na segmentação de imagens de satélite.
+
 ### 7.2 Justificativa da Técnica
+
+&nbsp;&nbsp;&nbsp;&nbsp;A escolha pela Segmentação Semântica com uma CNN do tipo U-Net é justificada pela natureza do problema. O objetivo do projeto não é apenas saber se uma imagem contém vegetação (classificação), mas sim identificar quais pixels exatos correspondem à vegetação, construções, água, etc. A segmentação semântica é a única técnica que oferece essa classificação pixel a pixel, o que é essencial para criar mapas precisos e calcular áreas exatas, fundamentando toda a análise quantitativa da plataforma. A arquitetura U-Net é particularmente eficaz, pois sua estrutura de codificador-decodificador com skip connections (conexões de atalho) permite que o modelo utilize informações de diferentes escalas de resolução, combinando o contexto geral da imagem com detalhes finos das bordas, o que é crucial para delimitar objetos em imagens de satélite complexas. [[6]](#referências) [[7]](#referências) [[8]](#referências)
+
+&nbsp;&nbsp;&nbsp;&nbsp;Algumas outras alternativas foram pensadas, porém não atendem às necessidades técnicas do projeto pelos seguintes motivos:
+- Machine Learning Clássico (ex: Random Forest, SVM): Métodos clássicos exigiriam um processo de feature engineering manual para cada pixel, ou seja, um especialista teria que definir características como cor média, textura e gradientes para treinar o modelo. Este processo é demorado, menos escalável e, segundo a literatura, geralmente resulta em uma performance inferior à das Redes Neurais Convolucionais, que aprendem as melhores features de forma automática e hierárquica diretamente dos dados.
+
+- Classificação de Imagem por Patches: Uma abordagem alternativa seria dividir a imagem de satélite em uma grade e classificar cada "quadrado" (patch) da grade. O problema dessa técnica é a perda de resolução e precisão nas fronteiras entre as classes. Seria impossível, por exemplo, delinear o contorno exato de um rio ou de um parque, resultando em cálculos de área imprecisos.
+
 ### 7.3 Métricas de Avaliação
 
+&nbsp;&nbsp;&nbsp;&nbsp;Dado que o problema é de classificação pixel a pixel (segmentação semântica), as métricas de avaliação do modelo de IA serão focadas em medir a precisão dessa classificação em nível de pixel. As métricas de avaliação serão:
+
+- Intersection over Union (IoU) / Jaccard Index (Métrica Principal): Esta é a métrica padrão e mais importante para tarefas de segmentação. Ela calcula a razão entre a área de interseção (onde a previsão do modelo e o rótulo real concordam) e a área de união (a área total coberta pela previsão e pelo rótulo real). Um IoU mais próximo de 1 indica uma previsão quase perfeita. Será calculada a média do IoU (mIoU) entre todas as classes (vegetação, água, etc.) para obter uma medida geral do desempenho do modelo [[9]](#referências).
+
+- Dice Coefficient (F1-Score): Similar ao IoU, o Coeficiente de Dice também mede a sobreposição entre a previsão e a verdade, sendo outra métrica padrão para avaliar a acurácia da segmentação [[9]](#referências).
+
+- Pixel Accuracy: Mede a porcentagem de pixels classificados corretamente em toda a imagem. Embora seja uma métrica simples de entender, ela será usada com cautela, pois pode ser enganosa em casos de classes desbalanceadas (ex: uma imagem com 95% de construções e 5% de água).
+
+- Matriz de Confusão (por classe): Será utilizada para uma análise mais granular, permitindo visualizar para quais classes o modelo está acertando e errando mais. Por exemplo, podemos descobrir se o modelo está confundindo solo exposto com construções [[10]](#referências).
 
 ## 8. Orçamento Estimado (Se aplicável)
+
+&nbsp;&nbsp;&nbsp;&nbsp;A estimativa de custos para o projeto Biomap foi elaborada considerando a fase inicial de desenvolvimento, prototipação e validação, com uma duração projetada de 3 a 6 meses. Nesta fase, o custo direto de infraestrutura e tecnologia é estimado em R$ 0,00. Este valor é alcançado através da utilização estratégica dos seguintes recursos:
+
+- Créditos do Google Cloud Free Trial: Um saldo inicial para cobrir quaisquer custos que excedam os níveis gratuitos.
+
+- Nível Gratuito ("Always Free" Tier): A maioria dos serviços a serem utilizados possui uma generosa camada de uso gratuito mensal, que é suficiente para a escala de um projeto em fase de validação.
+
+- Cotas de Uso para Fins Não Comerciais: Ferramentas como o Google Earth Engine oferecem acesso gratuito para projetos de pesquisa e acadêmicos.
+
+
 | Item de Custo | Descrição | Custo Estimado (R$) |
 | :--- | :--- | :--- |
-| Infraestrutura de Hospedagem | Custos com serviços de nuvem (ex: Google Cloud, AWS). | |
-| Licenciamento de APIs/Modelos | Se aplicável, custo de uso de APIs de terceiros. | |
-| Outros Custos Operacionais | Custos com domínios, ferramentas, etc. | |
-| **Total Estimado** | **Soma de todos os custos.** | **R$ 0,00** |
+| Infraestrutura de Hospedagem | Hospedagem da aplicação web (Cloud Run), armazenamento de datasets e modelos (Cloud Storage) e banco de dados analítico (BigQuery). | R$ 0,00 (Coberto pelo Nível Gratuito de cada serviço) |
+| Treinamento e Inferência de IA | Uso da plataforma Vertex AI para treinar, testar e executar o modelo de CNN para a segmentação das imagens de satélite. | R$ 0,00 (Coberto pelo Nível Gratuito do Vertex AI e/ou créditos iniciais) |
+| Acesso a APIs e Dados Geoespaciais | Uso da API do Google Earth Engine para processamento de imagens e da API do Google Maps para a camada do mapa-base. | R$ 0,00 (Coberto pela cota de uso não comercial e pelo nível gratuito da API) |
+| Outros Custos Operacionais | Registro de um domínio web para a plataforma (ex: biomap.org). | R$ 40,00 / ano |
+| **Total Estimado** | **Soma dos custos diretos para a fase de prototipação.** | **R$ 40,00** |
+
+## 8.2. Estimativa de Custo Pós-Período Inicial
+
+&nbsp;&nbsp;&nbsp;&nbsp;É importante notar que, após o término do período de trial e o consumo dos créditos, a plataforma passaria a operar no modelo "pay-as-you-go". No entanto, é crucial entender que a arquitetura serverless idealizada para o projeto é extremamente eficiente em custos. A maior parte da infraestrutura principal possui um Nível Gratuito ("Always Free" Tier) tão generoso que, para um tráfego de baixo a moderado, os custos associados a eles permanecerão nulos ou muito próximos de zero. O custo variável do projeto virá quase que exclusivamente do uso do Google Cloud Vertex AI para treinamento e inferência do modelo. Com base nisso, podemos estimar os seguintes cenários:
+
+- Cenário de Baixa Utilização (Modo de Manutenção): Se a plataforma estiver operando apenas para servir as análises já existentes a um número limitado de usuários, sem realizar novos treinamentos de modelo, o custo mensal tende a ser praticamente nulo ou inferior a R$ 50 por mês. Este valor cobriria eventuais excedentes mínimos de uso.
+
+- Cenário de Uso Ativo (Pesquisa e Desenvolvimento): Em um cenário mais ativo, por exemplo, realizando um ou dois re-treinamentos completos do modelo de IA por mês para melhorar sua acurácia e processando novas áreas geográficas sob demanda, a estimativa de custo mensal ficaria na faixa de R$ 150 a R$ 400.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Esses valores são estimativas e podem variar com o uso. A grande vantagem da arquitetura pré-planejada é o controle de custos, garantindo que a despesa do projeto escale de forma diretamente proporcional à sua atividade, sem custos fixos elevados.
 
 ## Referências
 
@@ -271,3 +319,13 @@ O SOM representa a meta de adoção inicial e realista para os primeiros períod
 [4] - https://revistagalileu.globo.com/Um-So-Planeta/noticia/2021/11/arvores-podem-reduzir-em-ate-12c-temperatura-das-cidades-diz-estudo.html
 
 [5] - https://g1.globo.com/ms/mato-grosso-do-sul/cidade-das-arvores/noticia/2023/11/29/presenca-de-arvores-ajuda-na-saude-mental-da-populacao.ghtml
+
+[6] - https://www.superannotate.com/blog/guide-to-semantic-segmentation
+
+[7] - https://www.analyticsvidhya.com/blog/2022/10/image-segmentation-with-u-net/
+
+[8] - https://medium.com/@alexquesada22/u-net-a-versatile-deep-learning-architecture-for-image-segmentation-2a85b52d71f6
+
+[9] - https://nachi-keta.medium.com/computer-vision-iou-jaccards-index-dice-score-coefficient-861c4a496b2b
+
+[10] - https://www.ultralytics.com/pt/glossary/confusion-matrix
