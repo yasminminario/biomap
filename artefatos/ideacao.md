@@ -15,7 +15,7 @@
 ### 3.1. Escopo da Solução
 
 <div align="center">
-  <sub>Figura X - Matriz Faz e Não faz </sub>
+  <sub>Figura 1 - Matriz Faz e Não faz </sub>
   <br><br>
   <img src="assets/biomap_faznaofaz.png" alt="Matriz Faz e Não faz" width="100%">
   <br><br>
@@ -47,7 +47,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;A ferramenta a seguir mapeia as dificuldades, ganhos e tarefas dos usuários e mostra como os recursos do Biomap atuam para aliviar essas dificuldades e gerar os ganhos esperados, alinhando o problema à solução.
 
 <div align="center">
-  <sub>Figura X - Canvas de Proposta de Valor </sub>
+  <sub>Figura 2 - Canvas de Proposta de Valor </sub>
   <br><br>
   <img src="assets/biomap_vpc.png" alt="Canvas de Proposta de Valor" width="100%">
   <br><br>
@@ -191,7 +191,7 @@ Hipóteses a serem testadas:
 &nbsp;&nbsp;&nbsp;&nbsp;A análise TAM, SAM, SOM dimensiona o público potencial do projeto. Como uma iniciativa de código aberto, o mercado é medido em público potencial, não em receita. O diagrama e o detalhamento ilustram o universo total de usuários (TAM), o segmento que pode ser atendido no Brasil (SAM) e a meta de adoção inicial (SOM).
 
 <div align="center">
-  <sub>Figura X - Canvas do TAM, SAM, SOM </sub>
+  <sub>Figura 3 - Canvas do TAM, SAM, SOM </sub>
   <br><br>
   <img src="assets/biomap_tamsamsom.png" alt="Matriz Faz e Não faz" width="100%">
   <br><br>
@@ -235,7 +235,7 @@ Hipóteses a serem testadas:
 ### 5.1. Persona 1: Lucas Andrade
 
 <div align="center">
-  <sub>Figura X - Persona Lucas Andrade</sub>
+  <sub>Figura 4 - Persona Lucas Andrade</sub>
   <br><br>
   <img src="assets/biomap_persona1.svg" alt="Persona Lucas Andrade" width="100%">
   <br><br>
@@ -247,7 +247,7 @@ Hipóteses a serem testadas:
 ### 5.2. Persona 2: Ana Clara Souza
 
 <div align="center">
-  <sub>Figura X - Persona Ana Clara Souza</sub>
+  <sub>Figura 5 - Persona Ana Clara Souza</sub>
   <br><br>
   <img src="assets/biomap_persona2.svg" alt="Persona Ana Clara Souza" width="100%">
   <br><br>
